@@ -1,7 +1,6 @@
-# Security Notes (Incremental Update)
+# Security Notes (Incremental)
 
-- Ensure that any new admin-only actions use the existing Ownable/onlyOwner pattern to avoid privilege escalation.
-- Avoid adding funds-receiving fallback logic unless strictly required; if added, implement access controls and explicit withdrawal paths.
-- When introducing new events, index addresses where appropriate to facilitate off-chain monitoring without leaking sensitive data.
-
-This document intentionally avoids changing runtime behavior and focuses on best practices for future enhancements.
+- Gas-focused optimizations should not alter access control or permission checks.
+- Any added helpers or utilities should be marked as view/pure where possible to avoid side effects.
+- Ensure that new code paths cannot enable reentrancy or leverage subtle state changes under different conditions.
+- When introducing new public/external functions (even read-only), consider audit implications and keep interfaces minimal.
